@@ -54,3 +54,11 @@ round trip without an attendance write. The return kept design B and the token
 fragment. The existing Apps Script app is version 10 with unchanged deployment
 URL, owner execution and access. The full private workspace test suite passed
 90 tests; those backend test sources are intentionally outside this repository.
+
+Header confirmation correction (24 October 2026): the header previously remained
+a section link even on personalized pages. Header, hero and lower confirmation
+now all open the existing private form when invitation context is present. Generic
+header/hero links still reach the personal-link instructions. The browser regression
+`node scripts/check-personalized-navigation.mjs` checks all three controls in A/B/C
+with a synthetic token and stub form, plus both generic controls. It requires
+Playwright (or PLAYWRIGHT_MODULE_PATH pointing to an installed Playwright module).

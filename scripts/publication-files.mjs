@@ -2,7 +2,7 @@
 export const publicationFiles = [
   '.gitignore', '.github/workflows/pages.yml', 'PUBLICATION.md',
   'index.html', 'package.json', 'package-lock.json', 'vite.config.js',
-  'scripts/publication-files.mjs', 'scripts/check-publication.mjs',
+  'scripts/publication-files.mjs', 'scripts/check-publication.mjs', 'scripts/check-personalized-navigation.mjs',
   'src/accommodation-ui.js', 'src/art.js', 'src/config.js', 'src/event-content.js',
   'src/i18n.js', 'src/main.js', 'src/navigation.js', 'src/public-sections.js',
   'src/rsvp-demo.js', 'src/style.css', 'src/weekend-content.js',
