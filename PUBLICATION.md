@@ -43,7 +43,8 @@ original deployment URL. Keep direct-form links privately as a recovery route.
 Approved repository: `UkoZJ/Anna-Zivko` (public).
 Homepage: `https://ukozj.github.io/Anna-Zivko/`.
 The exact homepage is allowlisted in the existing private guest deployment.
-The page retains its draft labels and provisional schedule. Signed-out server
+The public prototype labels and private test notices have been removed. The
+provisional schedule remains as supplied. Signed-out server
 save/read-back and the organizers' final retention policy remain acceptance work
 before guest distribution. Publication does not send invitations.
 
