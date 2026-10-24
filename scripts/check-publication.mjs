@@ -31,6 +31,8 @@ for (const name of files) {
 }
 if (!dist) {
   for (const name of await walk('public')) if (!allowed.has(name)) findings.push(name + ': unreviewed public asset');
+  const tracked=execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
+  for(const name of tracked) if(!allowed.has(name))findings.push(name + ': tracked outside publication list');
 }
 if (process.argv.includes('--staged')) {
   const names = execFileSync('git',['diff','--cached','--name-only','-z'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
