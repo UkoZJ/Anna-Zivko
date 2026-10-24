@@ -32,6 +32,17 @@ try {
   if(!passed)failures++;
   await page.close();
  }
+ {
+  const page=await browser.newPage();let opened=false;
+  await page.route('**/src/navigation.js',async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace('http://127.0.0.1:5173/',origin+'/')});});
+  await page.route('https://script.google.com/**',async route=>{opened=new URL(route.request().url()).searchParams.get('invite')===token;await route.fulfill({contentType:'text/html',body:'<h1>Synthetic private form</h1>'});});
+  await page.goto(origin+'/');
+  await page.goto(`${origin}/#invite=${token}`);
+  await page.locator('#header-confirmation').click();await page.waitForTimeout(150);
+  console.log(`${opened?'PASS':'FAIL'} same-page personal link: header opens private form`);
+  if(!opened)failures++;
+  await page.close();
+ }
  for(const selector of ['#header-confirmation','#home-confirmation']) {
   const page=await browser.newPage();let opened=false;
   await page.route('https://script.google.com/**',async route=>{opened=true;await route.abort();});

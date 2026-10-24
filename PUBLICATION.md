@@ -62,3 +62,5 @@ header/hero links still reach the personal-link instructions. The browser regres
 `node scripts/check-personalized-navigation.mjs` checks all three controls in A/B/C
 with a synthetic token and stub form, plus both generic controls. It requires
 Playwright (or PLAYWRIGHT_MODULE_PATH pointing to an installed Playwright module).
+Invitation context also refreshes after same-document hash changes and browser
+history navigation, so opening a personal link in an existing homepage tab works.

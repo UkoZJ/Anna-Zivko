@@ -4,7 +4,7 @@ import {icon} from './art.js';
 import {introduction,publicSections,connectVenueSlider} from './public-sections.js';
 import { eventConfig } from './config.js';
 import { rsvpNavigation, invitationFromURL } from './navigation.js';
-const invitationToken = invitationFromURL(location.href);
+let invitationToken = invitationFromURL(location.href);
 const showDemo=import.meta.env.DEV&&new URLSearchParams(location.search).get('preview')==='rsvp';
 let locale = pickLocale();
 let variant = new URLSearchParams(location.search).get('variant') || 'A';
@@ -27,5 +27,10 @@ function cycle(direction){const list=['A','B','C'];variant=list[(list.indexOf(va
 // Keep the invitation fragment while moving between public sections.
 document.addEventListener('click',e=>{if(e.defaultPrevented)return;const link=e.target.closest('a[href^="#"]');if(!invitationToken||!link)return;e.preventDefault();const id=link.getAttribute('href').slice(1);const target=document.getElementById(id||'app');target?.scrollIntoView();if(id==='main')target?.focus();});
 document.addEventListener('keydown',e=>{if(!import.meta.env.DEV || document.querySelector('dialog[open]') || e.target.closest('input,textarea,select,button,a,video,summary,.venue-slider,[contenteditable]'))return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();cycle(e.key==='ArrowLeft'?-1:1);}});
+// Opening a personal link in an existing homepage tab can change only the hash.
+// That is a same-document navigation: refresh invitation context without a reload.
+function syncInvitation(){const current=invitationFromURL(location.href);if(current!==invitationToken){invitationToken=current;render();}}
+window.addEventListener('hashchange',syncInvitation);
+window.addEventListener('popstate',syncInvitation);
 render();
 if(import.meta.env.DEV&&new URLSearchParams(location.search).get('preview')==='rsvp')document.querySelector('#open-demo').click();
