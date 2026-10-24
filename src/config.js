@@ -1,0 +1,2 @@
+// Approved event date and RSVP deadline; exact event start time remains unset.
+export const eventConfig = { names: ['Anna', 'Zivko'], date: '2027-06-05', startTime: null, timeZone: 'Europe/Madrid', rsvpDeadline: '2027-05-05T23:59:59.999+02:00', venue: 'Masia El Collell, l’Esquirol', venueAddress: 'C-153, km 21,5 · 08511 l’Esquirol (Barcelona)', venueMapsUrl: 'https://maps.app.goo.gl/J8JWucGLBiZv6JsG9', organizerEmail: null, appsScriptUrl: 'https://script.google.com/macros/s/AKfycbwsp84p5pELlq6fCWZv5MT52j7wjZC0wDcKy_KC5dUQnd2_G2EvBR8wvbrGGwMyQJg2/exec' };
